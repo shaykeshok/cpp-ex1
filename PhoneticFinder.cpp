@@ -92,6 +92,7 @@ using namespace std;
             }
         }catch(char const* message){
             cout << message << endl;
+            return "";
         }
             // throw("word doesn't exist in text");
             string str="Did not find the word '";
