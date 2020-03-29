@@ -14,17 +14,20 @@ using namespace std;
         try{
             std::transform(word.begin(), word.end(),word.begin(), ::tolower);
             cout<<"word: "<<word<<endl;
-            for(int i=0;i<word.size();i++) //לבדוק אם צריך להוסיף בדיקה אם יש ניקוד מפריד
-                if(isspace(word[i])) throw("The word must contain only one word");
+            vector<string> words=split(word,false);
+            int containsWord=0;
+            for(int i=0;i<words.size();i++){
+                if(words[i]!=""){
+                     if(containsWord==0) containsWord++;
+                     else
+                        throw("The word must contain only one word");
+                }
+            }
           
             std::string::iterator end_pos = std::remove(word.begin(), word.end(), ' ');
             word.erase(end_pos, word.end());
             if(word=="")
                 throw("The word cannot be empty");
-        // }catch(string exc){
-        //     cout << exc << endl;
-        // }
-        // try{
             
             bool equal;
             vector<string> v1=split(text,false);
@@ -116,7 +119,6 @@ using namespace std;
             text.erase(0, pos + delimiter.length());
         }
         data.push_back(text);
-   
         return data;
     }
  };
