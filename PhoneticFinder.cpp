@@ -20,14 +20,14 @@ using namespace std;
                 if(words[i]!=""){
                      if(containsWord==0) containsWord++;
                      else
-                        throw("The word must contain only one word");
+                        __throw_runtime_error("The word must contain only one word");
                 }
             }
           
             std::string::iterator end_pos = std::remove(word.begin(), word.end(), ' ');
             word.erase(end_pos, word.end());
             if(word=="")
-                throw("The word cannot be empty");
+                __throw_runtime_error("The word cannot be empty");
             
             bool equal;
             vector<string> v1=split(text,false);
